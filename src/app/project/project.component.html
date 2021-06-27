@@ -1,0 +1,10 @@
+<mat-card class="card">
+  <div class="card-header">
+    <h3 class="title">{{ title }}</h3>
+  </div>
+  <mat-card-content>
+    <div *ngFor="let todo of todos">
+      <app-checkbox [todo]="todo" [projectId]="projectId"></app-checkbox>
+    </div>
+  </mat-card-content>
+</mat-card>

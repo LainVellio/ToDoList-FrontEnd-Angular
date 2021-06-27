@@ -13,7 +13,8 @@
  *
  * Learn more in https://angular.io/guide/browser-support
  */
-
+import 'reflect-metadata';
+import 'es6-shim';
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */
@@ -57,8 +58,7 @@
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js';  // Included with Angular CLI.
-
+import 'zone.js'; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

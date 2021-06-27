@@ -1,0 +1,12 @@
+:host::ng-deep.mat-checkbox-label {
+  white-space: normal !important;
+}
+
+.checkbox {
+  padding: 5px 0;
+  height: auto;
+}
+
+.checked {
+  text-decoration: line-through;
+}

@@ -1,0 +1,40 @@
+.newTodo {
+  width: 322px;
+}
+
+.title {
+  text-align: center;
+  border-bottom: 1px solid rgb(224, 224, 224);
+  padding-bottom: 15px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.buttons {
+  display: flex;
+}
+
+.cancel {
+  color: white;
+  margin-right: 10px;
+  width: 50%;
+}
+
+.ok {
+  width: 50%;
+}
+
+.newCategory {
+  width: 100%;
+}
+
+.error {
+  font-size: 12px;
+  color: red;
+  margin-top: -20px;
+  margin-bottom: 20px;
+}

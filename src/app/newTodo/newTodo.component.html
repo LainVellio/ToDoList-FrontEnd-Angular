@@ -1,0 +1,75 @@
+<mat-card class="newTodo">
+  <h3 class="title">НОВАЯ ЗАДАЧА</h3>
+  <mat-card-content>
+    <form [formGroup]="newTodoForm" class="content">
+      <mat-form-field appearance="fill">
+        <mat-label>Название задачи...</mat-label>
+        <input matInput type="text" id="newTodo" formControlName="newTodo" />
+      </mat-form-field>
+      <div ngxErrors="newTodo">
+        <div class="error" ngxError="required" when="touched">
+          Введите название задачи
+        </div>
+        <div class="error" ngxError="maxlength" when="dirty">
+          Максимальная длина 70 символов
+        </div>
+      </div>
+
+      <div *ngIf="newTodoForm.value.selectCategory == 'newCategory'">
+        <mat-form-field class="newCategory" appearance="fill">
+          <mat-label>Название категории...</mat-label>
+          <input
+            matInput
+            type="text"
+            id="newProject"
+            formControlName="newProject"
+          />
+        </mat-form-field>
+        <div ngxErrors="newProject">
+          <div class="error" ngxError="required" when="touched">
+            Введите название категории
+          </div>
+          <div class="error" ngxError="maxlength" when="dirty">
+            Максимальная длина 40 символов
+          </div>
+        </div>
+      </div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Категория</mat-label>
+        <mat-select matInput formControlName="selectCategory">
+          <mat-option
+            *ngFor="let project of projects"
+            value="{{ project.title }}"
+            >{{ project.title }}</mat-option
+          >
+          <mat-option value="newCategory">Новая категория</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div ngxErrors="selectCategory">
+        <div class="error" ngxError="required" when="touched">
+          Выберите категорию
+        </div>
+      </div>
+      <div class="buttons">
+        <button
+          mat-flat-button
+          color="accent"
+          class="cancel"
+          (click)="onCancel()"
+        >
+          ОТМЕНА
+        </button>
+        <button
+          mat-flat-button
+          color="primary"
+          class="ok"
+          type="submit"
+          (click)="onSubmit()"
+        >
+          OК
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,69 @@
+.projects-container {
+  width: 1200px;
+  margin: 5vh auto;
+}
+
+.project {
+  width: 22.3rem;
+  margin: 0 auto;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.hidden {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.form {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #000000, $alpha: 0.7);
+}
+
+.form body {
+  background-color: rgba($color: #000000, $alpha: 0.7);
+}
+
+@media screen and (max-width: 1200px) {
+  .projects-container {
+    width: 800px;
+  }
+  .projects {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 800px) {
+  .projects-container {
+    width: 400px;
+  }
+  .projects {
+    grid-template-columns: 1fr;
+    grid-column-gap: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .projects-container {
+    width: 320px;
+  }
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  .project {
+    width: 20rem;
+    margin: 0 auto;
+  }
+}
