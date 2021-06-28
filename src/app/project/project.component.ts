@@ -15,16 +15,6 @@ export class ProjectComponent implements OnInit {
 
   ngOnInit() {
     this.todos = plainToClass(Todo, this.project.todos);
-    this.todos = this.todos.sort((a: any, b: any) => {
-      if (a.todoId > b.todoId) {
-        return 1;
-      }
-      if (a.todoId < b.todoId) {
-        return -1;
-      }
-      return 0;
-    });
-
     this.title = this.project.title.toUpperCase();
     this.projectId = this.project.id;
   }
