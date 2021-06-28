@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { plainToClass } from 'class-transformer';
 import { Project, Todo } from '../projects';
 
@@ -8,14 +8,19 @@ import { Project, Todo } from '../projects';
   styleUrls: ['./project.component.scss'],
 })
 export class ProjectComponent implements OnInit {
-  @Input() project!: Project;
   todos: any;
   title: string = '';
-  projectId: number = 0;
+
+  @Input() project!: Project;
+  @Output() closeProject = new EventEmitter();
 
   ngOnInit() {
     this.todos = plainToClass(Todo, this.project.todos);
     this.title = this.project.title.toUpperCase();
-    this.projectId = this.project.id;
+  }
+
+  onDelete() {
+    this.closeProject.emit(this.project.id);
+    console.log(this.project);
   }
 }

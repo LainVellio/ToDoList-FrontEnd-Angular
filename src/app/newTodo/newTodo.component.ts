@@ -20,7 +20,7 @@ export class NewTodoComponent implements OnInit {
   todo!: NewTodo;
   newProjectSubscription!: Subscription;
   @Input() projects!: any;
-  @Output() outCancel = new EventEmitter();
+  @Output() closeForm = new EventEmitter();
   @Output() outNewTodo = new EventEmitter<NewTodo>();
 
   ngOnInit() {
@@ -93,6 +93,6 @@ export class NewTodoComponent implements OnInit {
     this.onCancel();
   }
   onCancel() {
-    this.outCancel.emit();
+    this.closeForm.emit(false);
   }
 }

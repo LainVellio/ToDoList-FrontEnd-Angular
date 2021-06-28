@@ -10,7 +10,8 @@ export class ToolbarComponent implements OnInit {
   @Output() buttonClick = new EventEmitter();
 
   openForm() {
-    this.buttonClick.emit();
+    this.buttonClick.emit(true);
   }
+
   ngOnInit(): void {}
 }

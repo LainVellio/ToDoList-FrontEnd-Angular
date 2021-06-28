@@ -1,4 +1,6 @@
 .card-header {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 10px;
   border-bottom: 1px solid rgb(224, 224, 224);
 }
@@ -9,4 +11,19 @@
 
 .card {
   overflow: hidden;
+}
+
+.close {
+  height: auto;
+  padding: 0;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  border: none;
+  background-color: white;
+}
+
+.iconClose {
+  margin: -2px 0 0 -5px;
+  font-size: 18px;
 }

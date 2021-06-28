@@ -29,8 +29,8 @@ export class AppComponent implements OnInit {
       .subscribe(() => this.addNewTodo(newTodo));
   }
 
-  closeForm() {
-    this.isFormOpen = false;
+  toggleForm(isFormOpen: boolean) {
+    this.isFormOpen = isFormOpen;
   }
 
   addNewTodo(newTodo: NewTodo) {
@@ -54,6 +54,7 @@ export class AppComponent implements OnInit {
     } else {
       this.projects.push(
         plainToClass(Project, {
+          id: this.projects.length + 1,
           title: newTodo.title,
           todos: [{ todoId: 1, isCompleted: false, text: newTodo.text }],
         })
@@ -61,7 +62,15 @@ export class AppComponent implements OnInit {
     }
   }
 
-  openForm() {
-    this.isFormOpen = !this.isFormOpen;
+  destroyProject(projectId: number) {
+    this.httpService.deleteProject(projectId).subscribe(() => {
+      let index = 1;
+      this.projects.splice(projectId - 1, 1);
+      this.projects.forEach((project: Project) => {
+        project.id = index;
+        index += 1;
+        return project;
+      });
+    });
   }
 }

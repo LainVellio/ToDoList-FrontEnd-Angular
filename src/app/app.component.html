@@ -1,7 +1,7 @@
 <div [class.hidden]="isFormOpen">
   <app-toolbar
     [disabledOpenForm]="disabledOpenForm"
-    (buttonClick)="openForm()"
+    (buttonClick)="toggleForm($event)"
   ></app-toolbar>
   <div class="projects-container">
     <div class="projects">
@@ -9,11 +9,12 @@
         class="project"
         *ngFor="let project of projects"
         [project]="project"
+        (closeProject)="destroyProject($event)"
       ></app-project>
       <div class="form" *ngIf="isFormOpen">
         <app-newTodo
           (outNewTodo)="createNewTodo($event)"
-          (outCancel)="closeForm()"
+          (closeForm)="toggleForm($event)"
           [projects]="projects"
         ></app-newTodo>
       </div>

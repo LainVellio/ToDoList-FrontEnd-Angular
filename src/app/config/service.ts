@@ -27,4 +27,10 @@ export class HttpService {
       newTodo
     );
   }
+
+  public deleteProject(projectId: number): Observable<Project> {
+    return this.http.delete<Project>(
+      `https://velliotodolist.herokuapp.com/projects/${projectId}`
+    );
+  }
 }
