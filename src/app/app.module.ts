@@ -10,7 +10,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { NgxErrorsModule } from '@ultimate/ngxerrors';
 
 import { ProjectComponent } from './project/project.component';
 import { AppComponent } from './app.component';
@@ -40,7 +39,6 @@ import { NewTodoComponent } from './newTodo/newTodo.component';
     MatSelectModule,
     MatButtonModule,
     MatIconModule,
-    NgxErrorsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

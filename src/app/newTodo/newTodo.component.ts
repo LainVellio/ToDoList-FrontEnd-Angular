@@ -17,7 +17,7 @@ export class NewTodoComponent implements OnInit {
 
   newTodoForm!: FormGroup;
   title: string = '';
-  newTodo!: NewTodo;
+  todo!: NewTodo;
   newProjectSubscription!: Subscription;
   @Input() projects!: any;
   @Output() outCancel = new EventEmitter();
@@ -52,6 +52,16 @@ export class NewTodoComponent implements OnInit {
     });
   }
 
+  get newTodo() {
+    return this.newTodoForm.controls['newTodo'];
+  }
+  get newProject() {
+    return this.newTodoForm.controls['newProject'];
+  }
+  get selectCategory() {
+    return this.newTodoForm.controls['selectCategory'];
+  }
+
   toggleNewProjectValidators(selectCategory: string) {
     const newProject = this.newTodoForm.controls['newProject'];
     if (selectCategory == 'newCategory') {
@@ -75,11 +85,11 @@ export class NewTodoComponent implements OnInit {
     } else {
       this.title = this.newTodoForm.value.selectCategory;
     }
-    this.newTodo = {
+    this.todo = {
       title: this.title.trim(),
       text: this.newTodoForm.value.newTodo.trim(),
     };
-    this.onNewTodo(this.newTodo);
+    this.onNewTodo(this.todo);
     this.onCancel();
   }
   onCancel() {

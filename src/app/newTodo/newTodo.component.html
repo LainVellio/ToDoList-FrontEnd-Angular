@@ -6,11 +6,11 @@
         <mat-label>Название задачи...</mat-label>
         <input matInput type="text" id="newTodo" formControlName="newTodo" />
       </mat-form-field>
-      <div ngxErrors="newTodo">
-        <div class="error" ngxError="required" when="touched">
+      <div *ngIf="newTodo.invalid && (newTodo.dirty || newTodo.touched)">
+        <div class="error" *ngIf="newTodo.errors?.required">
           Введите название задачи
         </div>
-        <div class="error" ngxError="maxlength" when="dirty">
+        <div class="error" *ngIf="newTodo.errors?.maxlength">
           Максимальная длина 70 символов
         </div>
       </div>
@@ -25,11 +25,13 @@
             formControlName="newProject"
           />
         </mat-form-field>
-        <div ngxErrors="newProject">
-          <div class="error" ngxError="required" when="touched">
+        <div
+          *ngIf="newProject.invalid && (newProject.dirty || newProject.touched)"
+        >
+          <div class="error" *ngIf="newProject.errors?.required">
             Введите название категории
           </div>
-          <div class="error" ngxError="maxlength" when="dirty">
+          <div class="error" *ngIf="newTodo.errors?.maxlength">
             Максимальная длина 40 символов
           </div>
         </div>
@@ -46,8 +48,13 @@
           <mat-option value="newCategory">Новая категория</mat-option>
         </mat-select>
       </mat-form-field>
-      <div ngxErrors="selectCategory">
-        <div class="error" ngxError="required" when="touched">
+      <div
+        *ngIf="
+          selectCategory.invalid &&
+          (selectCategory.dirty || selectCategory.touched)
+        "
+      >
+        <div class="error" *ngIf="selectCategory.errors?.required">
           Выберите категорию
         </div>
       </div>
