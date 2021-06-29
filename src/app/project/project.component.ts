@@ -18,9 +18,4 @@ export class ProjectComponent implements OnInit {
     this.todos = plainToClass(Todo, this.project.todos);
     this.title = this.project.title.toUpperCase();
   }
-
-  onDelete() {
-    this.closeProject.emit(this.project.id);
-    console.log(this.project);
-  }
 }

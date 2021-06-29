@@ -61,16 +61,4 @@ export class AppComponent implements OnInit {
       );
     }
   }
-
-  destroyProject(projectId: number) {
-    this.httpService.deleteProject(projectId).subscribe(() => {
-      let index = 1;
-      this.projects.splice(projectId - 1, 1);
-      this.projects.forEach((project: Project) => {
-        project.id = index;
-        index += 1;
-        return project;
-      });
-    });
-  }
 }

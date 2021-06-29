@@ -1,9 +1,6 @@
 <mat-card class="card">
   <div class="card-header">
     <h3 class="title">{{ title }}</h3>
-    <button (click)="onDelete()" class="close">
-      <mat-icon class="iconClose">close</mat-icon>
-    </button>
   </div>
   <mat-card-content>
     <div *ngFor="let todo of todos">
