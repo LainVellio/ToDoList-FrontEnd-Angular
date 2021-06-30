@@ -17,7 +17,7 @@ export class HttpService {
 
   public todoChecked(projectId: number, todoId: number): Observable<Todo> {
     return this.http.patch<Todo>(
-      `${this.apiURL}${projectId}/todos/${todoId}`,
+      `${this.apiURL}/projects/${projectId}/todos/${todoId}`,
       {}
     );
   }
