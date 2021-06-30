@@ -7,8 +7,10 @@
     <div class="projects">
       <app-project
         class="project"
-        *ngFor="let project of projects"
-        [project]="project"
+        *ngFor="let project of projects; trackBy: trackByProject"
+        [projectId]="project.id"
+        [title]="project.title"
+        [todos]="project.todos"
       ></app-project>
       <div class="form" *ngIf="isFormOpen">
         <app-newTodo

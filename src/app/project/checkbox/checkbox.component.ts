@@ -22,11 +22,9 @@ export class CheckboxComponent implements OnInit {
 
   checkboxChange() {
     this.disabled = true;
-    this.httpService
-      .todoChecked(this.projectId, this.todo.todoId)
-      .subscribe(() => {
-        this.disabled = false;
-        this.checked = !this.checked;
-      });
+    this.httpService.todoChecked(this.projectId, this.todo.id).subscribe(() => {
+      this.disabled = false;
+      this.checked = !this.checked;
+    });
   }
 }

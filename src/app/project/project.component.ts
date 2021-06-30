@@ -8,14 +8,17 @@ import { Project, Todo } from '../projects';
   styleUrls: ['./project.component.scss'],
 })
 export class ProjectComponent implements OnInit {
-  todos: any;
-  title: string = '';
-
-  @Input() project!: Project;
+  @Input() projectId!: number;
+  @Input() title!: string;
+  @Input() todos!: Array<Todo>;
   @Output() closeProject = new EventEmitter();
 
   ngOnInit() {
-    this.todos = plainToClass(Todo, this.project.todos);
-    this.title = this.project.title.toUpperCase();
+    this.todos = plainToClass(Todo, this.todos);
+    this.title = this.title.toUpperCase();
+  }
+
+  trackByTodo(index: number, todo: Todo) {
+    return todo.id;
   }
 }

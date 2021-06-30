@@ -1,15 +1,20 @@
 export class Todo {
-  constructor(
-    public todoId: number,
-    public text: string,
-    public isCompleted: boolean
-  ) {}
+  id!: number;
+  text!: string;
+  isCompleted!: boolean;
 }
 
 export class Project {
-  constructor(public id: number, public title: string, public todos: Todo) {}
+  id!: number;
+  title!: string;
+  todos!: Array<Todo>;
+
+  getTitle() {
+    return this.title;
+  }
 }
 
 export class NewTodo {
-  constructor(public title: string, public text: string) {}
+  title!: string;
+  text!: string;
 }

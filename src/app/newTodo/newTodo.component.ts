@@ -16,10 +16,10 @@ export class NewTodoComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   newTodoForm!: FormGroup;
-  title: string = '';
+  title!: string;
   todo!: NewTodo;
   newProjectSubscription!: Subscription;
-  @Input() projects!: any;
+  @Input() projects!: Array<Project>;
   @Output() closeForm = new EventEmitter();
   @Output() outNewTodo = new EventEmitter<NewTodo>();
 
