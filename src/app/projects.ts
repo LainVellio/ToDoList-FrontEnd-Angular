@@ -8,10 +8,6 @@ export class Project {
   id!: number;
   title!: string;
   todos!: Array<Todo>;
-
-  getTitle() {
-    return this.title;
-  }
 }
 
 export class NewTodo {
