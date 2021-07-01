@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
       this.projects.map((project: Project) => {
         this.todoCount += project.todos.length;
       });
-      console.log(this.todoCount);
     });
   }
 
