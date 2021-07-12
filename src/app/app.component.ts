@@ -1,6 +1,6 @@
 import { HttpService } from './config/service';
 import { Component, OnInit } from '@angular/core';
-import { Project, Todo, NewTodo } from './projects';
+import { Project, Todo, NewProjectTodo } from './projects';
 import { plainToClass } from 'class-transformer';
 
 @Component({
@@ -15,15 +15,11 @@ export class AppComponent implements OnInit {
   projects!: Array<Project>;
   disabledOpenForm = true;
   isFormOpen = false;
-  todoCount: number = 0;
 
   ngOnInit() {
     this.httpService.getProjects().subscribe((data: Array<Project>) => {
       this.projects = plainToClass(Project, data);
       this.disabledOpenForm = false;
-      this.projects.map((project: Project) => {
-        this.todoCount += project.todos.length;
-      });
     });
   }
 
@@ -31,45 +27,41 @@ export class AppComponent implements OnInit {
     return project.id;
   }
 
-  createNewTodo(newTodo: NewTodo) {
+  createNewTodo(newProjectTodo: NewProjectTodo) {
     this.httpService
-      .postTodo(newTodo)
-      .subscribe(() => this.addNewTodo(newTodo));
+      .postTodo(newProjectTodo)
+      .subscribe((response: Project) => this.addNewTodo(response));
   }
 
   toggleForm(isFormOpen: boolean) {
     this.isFormOpen = isFormOpen;
   }
 
-  addNewTodo(newTodo: NewTodo) {
+  addNewTodo(newProject: Project) {
+    let newTodo = {
+      id: newProject.todos[0].id,
+      text: newProject.todos[0].text,
+      isCompleted: false,
+    };
     if (
       this.projects.some((project: Project) => {
-        return project.title.toLowerCase() == newTodo.title.toLowerCase();
+        return project.title.toLowerCase() == newProject.title.toLowerCase();
       })
     ) {
       this.projects = this.projects.map((project: Project) => {
-        if (project.title.toLowerCase() == newTodo.title.toLocaleLowerCase()) {
-          this.todoCount += 1;
-          console.log(this.todoCount, newTodo.text);
-          project.todos.push(
-            plainToClass(Todo, {
-              id: this.todoCount,
-              text: newTodo.text,
-              isCompleted: false,
-            })
-          );
+        if (
+          project.title.toLowerCase() == newProject.title.toLocaleLowerCase()
+        ) {
+          project.todos.push(plainToClass(Todo, newTodo));
         }
         return plainToClass(Project, project);
       });
     } else {
-      this.todoCount += 1;
       this.projects.push(
         plainToClass(Project, {
-          id: this.projects.length,
-          title: newTodo.title,
-          todos: [
-            { id: this.todoCount + 1, isCompleted: false, text: newTodo.text },
-          ],
+          id: newProject.id,
+          title: newProject.title,
+          todos: [newTodo],
         })
       );
     }

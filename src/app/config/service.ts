@@ -1,4 +1,4 @@
-import { NewTodo } from './../projects';
+import { NewProjectTodo } from './../projects';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
@@ -22,7 +22,7 @@ export class HttpService {
     );
   }
 
-  public postTodo(newTodo: NewTodo): Observable<Todo> {
-    return this.http.post<Todo>(`${this.apiURL}todos`, newTodo);
+  public postTodo(newProjectTodo: NewProjectTodo): Observable<Project> {
+    return this.http.post<Project>(`${this.apiURL}todos`, newProjectTodo);
   }
 }

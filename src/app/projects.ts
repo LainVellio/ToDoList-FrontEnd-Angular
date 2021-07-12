@@ -10,7 +10,7 @@ export class Project {
   todos!: Array<Todo>;
 }
 
-export class NewTodo {
+export class NewProjectTodo {
   title!: string;
   text!: string;
 }

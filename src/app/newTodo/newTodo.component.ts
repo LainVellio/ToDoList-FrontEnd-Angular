@@ -1,4 +1,4 @@
-import { NewTodo } from './../projects';
+import { NewProjectTodo } from './../projects';
 import { plainToClass } from 'class-transformer';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,11 +17,11 @@ export class NewTodoComponent implements OnInit {
 
   newTodoForm!: FormGroup;
   title!: string;
-  todo!: NewTodo;
+  todo!: NewProjectTodo;
   newProjectSubscription!: Subscription;
   @Input() projects!: Array<Project>;
   @Output() closeForm = new EventEmitter();
-  @Output() outNewTodo = new EventEmitter<NewTodo>();
+  @Output() outNewTodo = new EventEmitter<NewProjectTodo>();
 
   ngOnInit() {
     this.projects = plainToClass(Project, this.projects);
@@ -40,8 +40,8 @@ export class NewTodoComponent implements OnInit {
     );
   }
 
-  onNewTodo(newTodo: NewTodo) {
-    this.outNewTodo.emit(newTodo);
+  onNewTodo(newProjectTodo: NewProjectTodo) {
+    this.outNewTodo.emit(newProjectTodo);
   }
 
   initForm() {
