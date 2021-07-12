@@ -66,4 +66,12 @@ export class AppComponent implements OnInit {
       );
     }
   }
+
+  destroyProject(projectId: number) {
+    this.httpService.deleteProject(projectId).subscribe(() => {
+      this.projects = this.projects.filter(
+        (project) => project.id !== projectId
+      );
+    });
+  }
 }

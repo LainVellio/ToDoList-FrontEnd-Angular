@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpService } from 'src/app/config/service';
 import { Todo } from 'src/app/projects';
 
@@ -13,8 +13,11 @@ export class CheckboxComponent implements OnInit {
 
   @Input() projectId!: number;
   @Input() todo!: Todo;
+  @Output() closeTodo = new EventEmitter();
+
   checked = false;
   disabled = false;
+  isFocus = false;
 
   ngOnInit() {
     this.checked = this.todo.isCompleted;
@@ -26,5 +29,13 @@ export class CheckboxComponent implements OnInit {
       this.disabled = false;
       this.checked = !this.checked;
     });
+  }
+
+  onDelete() {
+    this.closeTodo.emit(this.todo.id);
+  }
+
+  onFocus(isFocus: boolean) {
+    this.isFocus = isFocus;
   }
 }

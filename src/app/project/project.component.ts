@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { plainToClass } from 'class-transformer';
-import { Project, Todo } from '../projects';
+import { HttpService } from '../config/service';
+import { Todo } from '../projects';
 
 @Component({
   selector: 'app-project',
@@ -8,6 +9,8 @@ import { Project, Todo } from '../projects';
   styleUrls: ['./project.component.scss'],
 })
 export class ProjectComponent implements OnInit {
+  constructor(private httpService: HttpService) {}
+
   @Input() projectId!: number;
   @Input() title!: string;
   @Input() todos!: Array<Todo>;
@@ -20,5 +23,15 @@ export class ProjectComponent implements OnInit {
 
   trackByTodo(index: number, todo: Todo) {
     return todo.id;
+  }
+
+  onDelete() {
+    this.closeProject.emit(this.projectId);
+  }
+
+  destroyTodo(todoId: number) {
+    this.httpService.deleteTodo(todoId).subscribe(() => {
+      this.todos = this.todos.filter((todo) => todo.id !== todoId);
+    });
   }
 }

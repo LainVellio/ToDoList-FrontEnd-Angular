@@ -10,3 +10,20 @@
 .checked {
   text-decoration: line-through;
 }
+
+.close {
+  float: right;
+  height: auto;
+  margin-top: 10px;
+  padding: 0;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  border: none;
+  background-color: white;
+}
+
+.iconClose {
+  margin: -2px 0 0 -5px;
+  font-size: 18px;
+}

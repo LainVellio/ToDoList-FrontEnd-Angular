@@ -25,4 +25,12 @@ export class HttpService {
   public postTodo(newProjectTodo: NewProjectTodo): Observable<Project> {
     return this.http.post<Project>(`${this.apiURL}todos`, newProjectTodo);
   }
+
+  public deleteProject(projectId: number): Observable<Project> {
+    return this.http.delete<Project>(`${this.apiURL}/projects/${projectId}`);
+  }
+
+  public deleteTodo(todoId: number): Observable<Todo> {
+    return this.http.delete<Todo>(`${this.apiURL}/todos/${todoId}`);
+  }
 }

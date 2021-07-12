@@ -1,10 +1,15 @@
-<mat-checkbox
-  class="checkbox"
-  color="primary"
-  [checked]="checked"
-  [class.checked]="checked"
-  (change)="checkboxChange()"
-  [disabled]="disabled"
->
-  {{ todo.text }}</mat-checkbox
->
+<div (mouseenter)="onFocus(true)" (mouseleave)="onFocus(false)">
+  <mat-checkbox
+    class="checkbox"
+    color="primary"
+    [checked]="checked"
+    [class.checked]="checked"
+    (change)="checkboxChange()"
+    [disabled]="disabled"
+  >
+    {{ todo.text }}</mat-checkbox
+  >
+  <button *ngIf="isFocus" (click)="onDelete()" class="close">
+    <mat-icon class="iconClose">close</mat-icon>
+  </button>
+</div>
