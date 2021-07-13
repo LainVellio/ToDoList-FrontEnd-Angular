@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://velliotodolist.herokuapp.com/',
+  apiURL: 'https://velliotodolist-server.herokuapp.com/',
 };
 
 /*
